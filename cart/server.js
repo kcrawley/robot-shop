@@ -5,7 +5,7 @@ var config = {
   'serviceName': 'cart-service',
   'reporter': {
     'logSpans': true,
-    'agentHost': 'localhost',
+    'agentHost': '0.0.0.0',
     'agentPort': 6832
   },
   'sampler': {
