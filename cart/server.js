@@ -17,6 +17,14 @@ var options = {
   tags: {
     'cart-service.version': '1.0.0',
   },
+  logger: {
+    info: function logInfo(msg) {
+      console.log("INFO ", msg);
+    },
+    error: function logError(msg) {
+      console.log("ERROR", msg);
+    },
+  },
 };
 var tracer = initTracer(config, options);
 
