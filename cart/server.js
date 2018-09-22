@@ -1,11 +1,15 @@
-const instana = require('instana-nodejs-sensor');
-// init tracing
-// MUST be done before loading anything else!
-instana({
-    tracing: {
-        enabled: true
-    }
-});
+var initTracer = require('jaeger-client').initTracer;
+
+// See schema https://github.com/jaegertracing/jaeger-client-node/blob/master/src/configuration.js#L37
+var config = {
+  serviceName: 'cart-service',
+};
+var options = {
+  tags: {
+    'cart-service.version': '1.0.0',
+  },
+};
+var tracer = initTracer(config, options);
 
 const redis = require('redis');
 const request = require('request');
