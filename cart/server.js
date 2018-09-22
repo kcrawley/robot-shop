@@ -2,7 +2,16 @@ var initTracer = require('jaeger-client').initTracer;
 
 // See schema https://github.com/jaegertracing/jaeger-client-node/blob/master/src/configuration.js#L37
 var config = {
-  serviceName: 'cart-service',
+  'serviceName': 'cart-service',
+  'reporter': {
+    'logSpans': true,
+    'agentHost': 'localhost',
+    'agentPort': 6832
+  },
+  'sampler': {
+    'type': 'probabilistic',
+    'param': 1.0
+  }
 };
 var options = {
   tags: {
