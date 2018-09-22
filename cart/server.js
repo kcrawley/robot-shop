@@ -28,11 +28,13 @@ var options = {
 };
 var tracer = initTracer(config, options);
 
+const middleware = require("tracing-middleware")
 const redis = require('redis');
 const request = require('request');
 const bodyParser = require('body-parser');
 const express = require('express');
 
+express.use(middleware({tracer: tracer}))
 var redisConnected = false;
 
 var redisHost = process.env.REDIS_HOST || 'redis'
